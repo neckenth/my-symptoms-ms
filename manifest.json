@@ -1,0 +1,19 @@
+{
+    "name": "MySymptoms-MS",
+    "version": "1.0",
+    "manifest_version": 2,
+    "description": "Daily popup for tracking various Relapsing-Remitting MS symptoms.",
+    "icons": {
+        "128": "ms_icon.png"
+    },
+    "browser_action": {
+        "default_title": "How are you feeling today? Rate your symptoms!",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "tabs", 
+        "<all_urls>",
+        "identity",
+        "https://*.googleapis.com/*"
+    ]
+}
