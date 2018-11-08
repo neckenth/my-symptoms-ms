@@ -1,15 +1,28 @@
-// Copyright (c) 2012 The Chromium Authors. All rights reserved.
-// Use of this source code is govered by a BSD-style license that can be
-// found in the LICENSE file.
+function popup() {
+  console.log("ping");
+  console.log(document);
 
-function click(e) {
-  chrome.tabs.executeScript(null, {
-    code: "document.body.style.backgroundColor = 'green';"
-  });
-  window.close();
+  //this part is not - returning an empty string - do i need an event listener
+  let userInput = document.getElementById("fatigue").value;
+  console.log(userInput);
+
+  //   console.log(userInput)
+
+  let params = {
+    active: true,
+    currentWindow: true
+  };
+
+  chrome.tabs.query(params, gotTab);
+
+  //this part is working
+  function gotTab(tabs) {
+    //   console.log(tabs)
+    let newData = {
+      fatigue: userInput
+    };
+    chrome.tabs.sendMessage(tabs[0].id, newData);
+  }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  const div = document.querySelectorAll("div");
-  div[0].addEventListener("click", click);
-});
+popup();

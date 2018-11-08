@@ -3,28 +3,33 @@
   <head>
     <title>MySymptoms-MS</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="popup.js"></script>
+    <script defer src="popup.js"></script>
   </head>
   <body>
     <div id="symptoms-list"></div>
     <h3>Symptoms</h3>
     <form id="symptoms-form">
-      <label id="symptom" for="fatigue">Fatigue</label>
-      <input type="checkbox" name="fatigue" />
-      <label id="symptom" for="tingling">Numbness/Tingling</label>
-      <input type="checkbox" name="tingling" />
-      <label id="symptom" for="weakness">Weakness</label>
-      <input type="checkbox" name="weakness" />
-      <label id="symptom" for="vision">Vision Problems</label>
-      <input type="checkbox" name="vision" />
-      <label id="symptom" for="dizzy">Dizziness/Vertigo</label>
-      <input type="checkbox" name="dizzy" />
-      <label id="symptom" for="cognition">Cognitive Clarity</label>
-      <input type="checkbox" name="cognition" />
-      <label id="symptom" for="depression">Depression</label>
-      <input type="checkbox" name="depression" />
-      <label id="symptom" for="balance">Balance</label>
-      <input type="checkbox" name="balance" />
+      <input id="test" type="text" /> 
+      <label class="symptom" for="fatigue">Fatigue</label>
+      <input type="number" id="fatigue" name="fatigue" />
+      <label class="symptom" for="tingling">Numbness/Tingling</label>
+      <input type="number" id="tingling" name="tingling" />
+      <label class="symptom" for="weakness">Weakness</label>
+      <input type="number" id="weakness" name="weakness" />
+      <label class="symptom" for="vision">Vision Problems</label>
+      <input type="number" id="vision" name="vision" />
+      <label class="symptom" for="dizzy">Dizziness/Vertigo</label>
+      <input type="number" id="dizzy" name="dizzy" />
+      <label class="symptom" for="cognition">Cognitive Clarity</label>
+      <input type="number" id="cognition" name="cognition" />
+      <label class="symptom" for="depression">Depression</label>
+      <input type="number" id="depression" name="depression" />
+      <label class="symptom" for="balance">Balance</label>
+      <input type="number" id="balance" name="balance" />
+      <label id="journal" for="journal">Journal</label>
+      <textarea wrap="hard"></textarea>
+      <input id="submit" type="submit" value="Submit" /> -->
+      <!-- <button id='submit' type='submit'>Submit</button>
     </form>
   </body>
 </html>
