@@ -13,7 +13,7 @@ const background = {
       jsonObj["symptoms"] = request.symptoms;
       console.log("message received", jsonObj);
 
-      //   this.postSymptoms(JSON.stringify(jsonObj))
+      //send data to post function
       this.postSymptoms(request.symptoms);
     });
   },
@@ -31,7 +31,9 @@ const background = {
   // },
 
   postSymptoms: function(msg) {
+    //extract values from msg obj for array in params obj below
     msg = msg.map(elem => Object.values(elem)[0]);
+    msg.unshift(new Date())
     const spreadSheetID = "1QYFb57cDedBeV53dLRgyo3vgLqNl1qP2FeSB_V_fyLA";
 
     const params = {
@@ -64,7 +66,7 @@ const background = {
         xhr2.open(
           "POST",
           `https://sheets.googleapis.com/v4/spreadsheets/${spreadSheetID}/values/Sheet1!A1:append?valueInputOption=USER_ENTERED`
-          );
+        );
         xhr2.setRequestHeader("Authorization", "Bearer " + token);
         xhr2.send(JSON.stringify(params));
       }
@@ -73,41 +75,3 @@ const background = {
 };
 
 background.init();
-
-// // const buttonClicked = (tab) => {
-// //     console.log(tab)
-// // }
-
-// chrome.browserAction.onClicked.addListener(buttonClicked)
-
-// function buttonClicked(tab) {
-//     let msg = {
-//         txt: 'goodbye'
-//     }
-//     chrome.tabs.sendMessage(tab.id, msg)
-//     console.log('button clicked', tab)
-// }
-
-// console.log('Ready to go')
-
-// chrome.runtime.onMessage.addListener((message, sender, response) => {
-//     chrome.tabs.query({active:true, currentWindow:true}, (tabs) => {
-//         if (tabs.length) {
-//             console.log('MESSAGE', message)
-//         }
-//     })
-//     // console.log('MESSAGE', message['fatigue'])
-// })
-
-// var popups = chrome.extension.getViews({type: "popup"});
-// if (0 < popups.length)
-//     console.log('we are here')
-//   popups[0].variable = 42;
-
-// chrome.extension.onConnect.addListener(function(port) {
-//     console.log("Connected .....");
-//     port.onMessage.addListener(function(msg) {
-//          console.log("message recieved" + msg);
-//         //  port.postMessage("Hi Popup.js");
-//     });
-// })
