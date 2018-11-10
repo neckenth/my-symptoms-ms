@@ -1,2 +1,6 @@
 .DS_Store
 *.log
+secrets.js
+node_modules
+config.js
+credentials.json

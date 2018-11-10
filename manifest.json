@@ -1,28 +1,30 @@
 {
   "name": "MySymptoms-MS",
-  "version": "1.0",
+  "version": "1.03",
   "manifest_version": 2,
   "description": "Daily popup for tracking various Relapsing-Remitting MS symptoms.",
   "icons": {
-    "128": "ms_icon.png"
+    "128": "ms_icon_resized.png"
   },
   "browser_action": {
     "default_title": "How are you feeling today? Rate your symptoms!",
     "default_popup": "popup.html"
   },
-  "content_scripts": [
-      {
-          "js": ["content.js", "popup.js"],
-          "matches": ["<all_urls>"]
-      }
-  ],
   "background": {
-      "scripts": ["background.js"]
+    "scripts": ["background.js"]
   },
+  "content_scripts": [{ "js": ["content.js"], "matches": ["<all_urls>"] }],
   "permissions": [
     "tabs",
-    "<all_urls>",
+    "storage",
+    "activeTab",
     "identity",
-    "https://*.googleapis.com/*"
-  ]
+    "https://*.googleapis.com/*",
+    "http://localhost:8080/api/routes"
+  ],
+  "oauth2": {
+    "client_id": "48454209769-ijq5aai16irvt8o7c808kv7tmdsgf73m.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/spreadsheets"]
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoOtVmb97K2H9alWLuvIokppB3J4fPbpHZF40pC7FvRvMmY4MniiqYiecdHh0ILffP4mtWmv9RmbtHcod+01wfY+0OChMgw879ZvL87suSLwhz9D+wRddxG7eRyE2vtB+Y5AFFi94h8RV4ySGBsxrBanPPFV8jlktAqUUHSYaehgKsZBzZJbSLGyf6FS1OdDxPZk4pTTYZAyI9eXg1e8MpQp4OvX+CIYGTEEyrIYnFHDsm0HMkUEIAJSaGYyKMhdqW/5xTsYBh6kNV3SRdrelZT+WtYlpdgEdPrL/ghvSZrQiSYUgP2n9kvDzHIJKPIuXZqFihqFLABeNuH5sDeLw8wIDAQAB"
 }
