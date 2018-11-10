@@ -17,7 +17,7 @@
   "permissions": [
     "tabs",
     "storage",
-    "activeTab",
+    "<all_urls>",
     "identity",
     "https://*.googleapis.com/*",
     "http://localhost:8080/api/routes"

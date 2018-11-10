@@ -31,12 +31,12 @@ const background = {
   // },
 
   postSymptoms: function(msg) {
+    msg = msg.map(elem => Object.values(elem)[0]);
     const spreadSheetID = "1QYFb57cDedBeV53dLRgyo3vgLqNl1qP2FeSB_V_fyLA";
 
     const params = {
-      range: "A1",
       majorDimension: "ROWS",
-      values: [Object.values(msg)]
+      values: [msg]
     };
 
     //get auth tokens
@@ -45,92 +45,30 @@ const background = {
         interactive: true
       },
       function(token) {
-        console.log(token)
-        // if (chrome.runtime.lastError) {
-        //   alert(chrome.runtime.lastError.message);
-        //   return;
-        // }
+        console.log(token);
+        if (chrome.runtime.lastError) {
+          alert(chrome.runtime.lastError.message);
+          return;
+        }
         let x = new XMLHttpRequest();
         x.open(
           "GET",
           "https://www.googleapis.com/oauth2/v2/userinfo?alt=json&access_token=" +
             token
         );
-        x.setRequestHeader('Authorization', 'Bearer ' + token);
+        x.setRequestHeader("Authorization", "Bearer " + token);
 
-        // x.onload = function() {
-        //   alert(x.response);
-        // };
-        // x.send();
+        //post data - authorize with token
+        const xhr2 = new XMLHttpRequest();
 
-        var xhr = new XMLHttpRequest();
-        xhr.open(
-          "PUT",
-          `https://sheets.googleapis.com/v4/spreadsheets/${spreadSheetID}/values/A1?valueInputOption=USER_ENTERED`
-        );
-        xhr.setRequestHeader("Authorization", "Bearer " + token);
-        console.log('THESE ARE PARAMS', params)
-        xhr.send(params);
+        xhr2.open(
+          "POST",
+          `https://sheets.googleapis.com/v4/spreadsheets/${spreadSheetID}/values/Sheet1!A1:append?valueInputOption=USER_ENTERED`
+          );
+        xhr2.setRequestHeader("Authorization", "Bearer " + token);
+        xhr2.send(JSON.stringify(params));
       }
     );
-
-    // const GoogleAuth;
-
-    // function initClient() {
-    //   gapi.client.init({
-    //     'apiKey': 'AIzaSyBXjq3MEaSQ-o_dax9r7RaYiJ8YaVK6UuM',
-    //     'clientId': '48454209769-mnrprlbh63drei4rukpeski0strvadvo.apps.googleusercontent.com',
-    //     'scope': 'https://www.googleapis.com/auth/spreadsheets',
-    //     'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4']
-    //   }).then(function () {
-    //     GoogleAuth = gapi.auth2.getAuthInstance();
-
-    //     GoogleAuth.isSignedIn.listen(updateSigninStatus)
-    //   })
-    // }
-
-    //THIS WAS TESTED FROM THE GOOGLE AUTH PLAYGROUND AND CONFIRMED TO WORK
-    // PUT `https://sheets.googleapis.com/v4/spreadsheets/${spreadSheetID}/values/A1?valueInputOption=USER_ENTERED`
-
-    // let access_token = chrome.identity.getAuthToken({
-    //     interactive: true
-    // }, function(token) {
-    //     if (chrome.runtime.lastError) {
-    //         alert(chrome.runtime.lastError.message);
-    //         return;
-    //     }
-    //     var x = new XMLHttpRequest();
-    //     x.open('GET', 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + token);
-    //     x.onload = function() {
-    //         alert(x.response);
-    //     };
-    //     x.send();
-    // });
-
-    // let sheetId = '1QYFb57cDedBeV53dLRgyo3vgLqNl1qP2FeSB_V_fyLA'
-
-    //   var params = {
-    //       "range":"A1",
-    //       "majorDimension": "ROWS",
-    //       "values": [
-    //       msg
-    //      ],
-    // }
-    // console.log("ACCESS_TOKEN", token);
-
-    // var xhr = new XMLHttpRequest();
-    // xhr.open('PUT', `https://sheets.googleapis.com/v4/spreadsheets/${spreadSheetID}/values/A1?valueInputOption=USER_ENTERED`)
-    // xhr.setRequestHeader('Authorization', 'Bearer ' + token);
-    // xhr.send(JSON.stringify(params));
-
-    // "https://ms-mysymptoms-1541705437963.firebaseio.com"
-    // xhr.open("POST", "https://ms-mysymptoms-1541705437963.firebaseio.com/symptoms.json", true);
-    // xhr.open("PUT", `https://docs.google.com/spreadsheets/d/${sheetId}`, true)
-    // xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    // xhr.send(msg);
-
-    //i would like to post data to an API endpoint here
-    //need to be able to get data and write to csv, which requires server-side code
   }
 };
 
