@@ -16,10 +16,12 @@ const app = {
     let cognition = document.getElementById("cognition");
     let depression = document.getElementById("depression");
     let balance = document.getElementById("balance");
+    let journal = document.getElementById("journal")
 
     //upon submit, update symptoms obj and send to background
     formEl.addEventListener("submit", ev => {
       ev.preventDefault();
+      console.log('JOURNAL', journal.value)
       console.log('button click')
       this.symptoms.push({fatigue: Number(fatigue.value)})
       this.symptoms.push({tingling: Number(tingling.value)})
@@ -29,6 +31,8 @@ const app = {
       this.symptoms.push({cognition: Number(cognition.value)})
       this.symptoms.push({depression: Number(depression.value)})
       this.symptoms.push({balance: Number(balance.value)})
+      this.symptoms.push({journal: journal.value})
+
 
       //not necessary
       // chrome.runtime.sendMessage({fn: 'getSymptoms'}, function(response) {

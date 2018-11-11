@@ -1,0 +1,17 @@
+#symptoms-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: .5em;
+}
+
+.symptom {
+    flex: 1;
+    padding: .5em 1em .5em 0;
+}
+
+.symptom-input {
+    flex: 2;
+    width: 20%;
+}
+

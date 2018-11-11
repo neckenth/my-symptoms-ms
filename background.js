@@ -33,7 +33,8 @@ const background = {
   postSymptoms: function(msg) {
     //extract values from msg obj for array in params obj below
     msg = msg.map(elem => Object.values(elem)[0]);
-    msg.unshift(new Date())
+    let today = new Date()
+    msg.unshift(today.toLocaleDateString('en-US'))
     const spreadSheetID = "1QYFb57cDedBeV53dLRgyo3vgLqNl1qP2FeSB_V_fyLA";
 
     const params = {

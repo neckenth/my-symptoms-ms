@@ -7,26 +7,28 @@
   </head>
   <body>
     <div id="symptoms-list"></div>
-    <h3>Symptoms</h3>
+    <h3>MySymptoms-MS</h3>
+    <p>Rate your symptoms from 1-10</p>
+    <p>(Least to most discomfort)</p>
     <form id="symptoms-form">
       <label class="symptom" for="fatigue">Fatigue</label>
-      <input type="text" id="fatigue" name="fatigue" />
+      <input class="symptom-input" type="number" id="fatigue" name="fatigue" min="1" max="10" />
       <label class="symptom" for="tingling">Numbness/Tingling</label>
-      <input type="number" id="tingling" name="tingling" />
+      <input class="symptom-input" type="number" id="tingling" name="tingling" min="1" max="10" />
       <label class="symptom" for="weakness">Weakness</label>
-      <input type="number" id="weakness" name="weakness" />
+      <input class="symptom-input" type="number" id="weakness" name="weakness" min="1" max="10" />
       <label class="symptom" for="vision">Vision Problems</label>
-      <input type="number" id="vision" name="vision" />
+      <input class="symptom-input" type="number" id="vision" name="vision" min="1" max="10" />
       <label class="symptom" for="dizzy">Dizziness/Vertigo</label>
-      <input type="number" id="dizzy" name="dizzy" />
+      <input class="symptom-input" type="number" id="dizzy" name="dizzy" min="1" max="10" />
       <label class="symptom" for="cognition">Cognitive Clarity</label>
-      <input type="number" id="cognition" name="cognition" />
+      <input class="symptom-input" type="number" id="cognition" name="cognition" min="1" max="10" />
       <label class="symptom" for="depression">Depression</label>
-      <input type="number" id="depression" name="depression" />
+      <input class="symptom-input" type="number" id="depression" name="depression" min="1" max="10" />
       <label class="symptom" for="balance">Balance</label>
-      <input type="number" id="balance" name="balance" />
-      <label id="journal" for="journal">Journal</label>
-      <textarea name='journal' wrap="hard"></textarea>
+      <input class="symptom-input" type="number" id="balance" name="balance" min="1" max="10" />
+      <label for="journal">Journal</label>
+      <textarea id="journal" wrap="hard" placeholder="Anything else of note?"></textarea>
       <button id='submit' type='submit'>Submit</button>
     </form>
   </body>
