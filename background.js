@@ -18,23 +18,23 @@ const background = {
     });
   },
 
-  //not sure i need these, since i don't really need to send a response back to the popup
+  setSymptoms: function(request, sender, sendResponse) {
+    console.log("setting symptoms obj", this.symptoms);
+    this.symptoms.push(request.symptoms);
+  },
 
-  // setSymptoms: function(request, sender, sendResponse) {
-  //     console.log('setting symptoms obj', this.symptoms)
-  //     this.symptoms.push(request.symptoms)
-
-  // },
-
-  // getSymptoms: function(request, sender, sendResponse) {
-  //     sendResponse(this.symptoms)
-  // },
+  getSymptoms: function(request, sender, sendResponse) {
+    sendResponse('message received')
+  },
 
   postSymptoms: function(msg) {
     //extract values from msg obj for array in params obj below
-    msg = msg.map(elem => Object.values(elem)[0]);
-    let today = new Date()
-    msg.unshift(today.toLocaleDateString('en-US'))
+    if (msg) {
+      msg = msg.map(elem => Object.values(elem)[0]);
+
+      let today = new Date();
+      msg.unshift(today.toLocaleDateString("en-US"));
+    }
     const spreadSheetID = "1QYFb57cDedBeV53dLRgyo3vgLqNl1qP2FeSB_V_fyLA";
 
     const params = {
