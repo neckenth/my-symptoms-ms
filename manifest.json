@@ -1,6 +1,6 @@
 {
   "name": "MySymptoms-MS",
-  "version": "1.03",
+  "version": "1.05",
   "manifest_version": 2,
   "description": "Daily popup for tracking various Relapsing-Remitting MS symptoms.",
   "icons": {
