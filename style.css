@@ -1,17 +1,66 @@
-#symptoms-form {
+body {
+    background-color: #EFEFEC;
+    color: #090B12;
+}
+
+h3, p {
+    color: #090B12;
+}
+
+.wrapper {
+    list-style-type: none;
+    padding: 0;
+    border-radius: 3px;
+    width: 100%;
+}
+
+.form-row {
     display: flex;
-    flex-direction: column;
     justify-content: flex-end;
     padding: .5em;
 }
 
-.symptom {
-    flex: 1;
+.form-row > label {
     padding: .5em 1em .5em 0;
+    flex: 2;
+    font-weight: bold;
 }
 
-.symptom-input {
-    flex: 2;
-    width: 20%;
+.form-row > input {
+    padding: .5em;
+    flex: 1;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #EEAA48;
+    border-width: thick;
+}
+
+textarea {
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #EEAA48;
+    border-width: thick;
+    display: block;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    width: 15em;
+    height: 2em;
+}
+
+button {
+    background-color: #EEAA48;
+    border-style:solid;
+    color: #090B12;
+    border-color: #EEAA48;
+    border-radius: 10px;
+    width: 12em;
+    height: 2em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button:hover {
+    border-color: #090B12;
 }
 
